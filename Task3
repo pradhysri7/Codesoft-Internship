@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string title = "C++ Basics", author = "Bjarne", isbn = "12345";
+    bool available = true;
+    int choice, days;
+
+    while (true) {
+        cout << "\n--- LIBRARY MENU ---\n";
+        cout << "1. View Book\n2. Search Book\n3. Checkout Book\n4. Return Book\n5. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            cout << "Title: " << title << "\nAuthor: " << author
+                 << "\nISBN: " << isbn
+                 << "\nStatus: " << (available ? "Available" : "Checked Out") << endl;
+        }
+        else if (choice == 2) {
+            string search;
+            cout << "Enter title to search: ";
+            cin >> search;
+            if (search == title) cout << "Book Found!\n";
+            else cout << "Book Not Found.\n";
+        }
+        else if (choice == 3) {
+            if (available) {
+                available = false;
+                cout << "Book checked out successfully.\n";
+            } else {
+                cout << "Book already checked out.\n";
+            }
+        }
+        else if (choice == 4) {
+            cout << "Enter late days: ";
+            cin >> days;
+            cout << "Fine: Rs " << days * 5 << endl;
+            available = true;
+            cout << "Book returned successfully.\n";
+        }
+        else if (choice == 5) {
+            break;
+        }
+        else {
+            cout << "Invalid choice!\n";
+        }
+    }
+    return 0;
+}
